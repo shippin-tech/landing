@@ -69,8 +69,9 @@ const ld = {
 	header.top nav a { color: var(--fg); text-decoration: none; }
 	header.top nav a:hover { color: var(--cyan); }
 	.logo { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 700; color: var(--fg); text-decoration: none; }
-	.logo svg { width: 2rem; height: 2rem; }
-	.logo b { color: var(--cyan); }
+	.logo .mark svg { width: 2rem; height: 2rem; }
+	.logo .word { display: inline-flex; --brand-accent: var(--cyan); }
+	.logo .word svg { height: 1.45rem; width: auto; display: block; }
 	.step { min-height: 90vh; display: grid; align-content: center; padding: 4rem clamp(1rem, 6vw, 6rem); max-width: 72rem; }
 	.step p { max-width: 40rem; color: var(--muted); font-size: 1.15rem; }
 	.eyebrow { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 0.75rem; }
