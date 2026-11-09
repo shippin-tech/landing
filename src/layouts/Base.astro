@@ -1,20 +1,22 @@
 ---
+import brand from '../brand.generated.json';
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const c = brand.colors;
 const ld = {
 	'@context': 'https://schema.org',
 	'@type': 'SoftwareApplication',
-	name: 'ShippinTECH',
+	name: brand.name,
 	applicationCategory: 'BusinessApplication',
 	operatingSystem: 'Linux, Docker',
 	description,
-	url: 'https://shippin.tech/',
+	url: `https://${brand.domain}/`,
 	offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Free tier for small organisations' }
 };
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" style={`--ink:${c.ink};--sky:${c.sky};--tan:${c.tan};--gold:${c.gold};--cyan:${c.accent};`}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,9 +24,9 @@ const ld = {
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="theme-color" content="#0b1020" />
+		<meta name="theme-color" content={c.ink} />
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="ShippinTECH" />
+		<meta property="og:site_name" content={brand.name} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
@@ -44,8 +46,7 @@ const ld = {
 
 <style is:global>
 	:root {
-		--bg: #0b1020; --fg: #eef2ff; --muted: #9aa6c4; --card: #131a30; --line: #25304f;
-		--sky: #7dd3fc; --tan: #e6a77c; --gold: #f2c46d; --cyan: #22d3ee;
+		--bg: var(--ink); --fg: #eef2ff; --muted: #9aa6c4; --card: #131a30; --line: #25304f;
 		color-scheme: dark;
 	}
 	:root[data-theme='light'] {

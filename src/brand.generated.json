@@ -1,0 +1,27 @@
+{
+	"name": "ShippinTECH",
+	"nameParts": [
+		"Shippin",
+		"TECH"
+	],
+	"domain": "shippin.tech",
+	"tagline": "Private mail, docs and drive for your own domain",
+	"description": "Deploy your own mail, docs and drive on your domain. Organise teams and tiers, connect existing drives, and turn on security baselines with one checkbox. First 100 get hands-on setup.",
+	"oauthClientName": "ShippinTECH Web Interface",
+	"urls": {
+		"webmail": "https://mail.shippin.tech",
+		"docs": "https://docs.shippin.tech",
+		"github": "https://github.com/shippintech"
+	},
+	"colors": {
+		"ink": "#0b1020",
+		"accent": "#22d3ee",
+		"sky": "#7dd3fc",
+		"tan": "#e6a77c",
+		"gold": "#f2c46d",
+		"primary": "#39ff14",
+		"primaryHover": "#00e676",
+		"primaryDeep": "#0b6b32"
+	},
+	"markSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\"><rect x=\"1.5\" y=\"1.5\" width=\"61\" height=\"61\" rx=\"14\" fill=\"#7dd3fc\"/><path fill=\"#e6a77c\" d=\"M1.5 22 11 18.5 32 40l21-21.5 9.5 3.5V48a14 14 0 0 1-14 14.5H15.5A14 14 0 0 1 1.5 48z\"/><path fill=\"none\" stroke=\"#0b1020\" stroke-width=\"3\" stroke-linejoin=\"round\" d=\"M1.5 22 11 18.5 32 40l21-21.5 9.5 3.5\"/><path fill=\"#f2c46d\" stroke=\"#0b1020\" stroke-width=\"2\" stroke-linejoin=\"round\" d=\"M32 29l3.2 9.8L45 42l-9.8 3.2L32 55l-3.2-9.8L19 42l9.8-3.2z\"/><rect x=\"1.5\" y=\"1.5\" width=\"61\" height=\"61\" rx=\"14\" fill=\"none\" stroke=\"#0b1020\" stroke-width=\"3\"/></svg>"
+}
