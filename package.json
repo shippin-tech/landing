@@ -1,0 +1,22 @@
+{
+	"name": "shippintech-landing",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"license": "BUSL-1.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"check": "astro check",
+		"signup": "node server/signup.mjs",
+		"test": "node --test test/*.test.mjs"
+	},
+	"dependencies": {
+		"astro": "^5.0.0"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.4",
+		"typescript": "^5.6.0"
+	}
+}

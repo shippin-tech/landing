@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+
+const webmail = import.meta.env.PUBLIC_WEBMAIL_URL ?? 'https://mail.shippin.tech';
+const github = import.meta.env.PUBLIC_GITHUB_URL ?? 'https://github.com/shippintech';
+---
+<Base
+	title="ShippinTECH: private mail, docs and drive for your own domain"
+	description="Deploy your own mail, docs and drive on your domain. Organise teams and tiers, connect existing drives, and turn on security baselines with one checkbox. First 100 get hands-on setup."
+>
+	<canvas id="field" aria-hidden="true"></canvas>
+	<a class="skip" href="#signup">Skip to signup</a>
+
+	<header class="top">
+		<a class="logo" href="/" aria-label="ShippinTECH home">
+			<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="#7dd3fc"/><path fill="#e6a77c" d="M1.5 22 11 18.5 32 40l21-21.5 9.5 3.5V48a14 14 0 0 1-14 14.5H15.5A14 14 0 0 1 1.5 48z"/><path fill="none" stroke="#0b1020" stroke-width="3" stroke-linejoin="round" d="M1.5 22 11 18.5 32 40l21-21.5 9.5 3.5"/><path fill="#f2c46d" stroke="#0b1020" stroke-width="2" stroke-linejoin="round" d="M32 29l3.2 9.8L45 42l-9.8 3.2L32 55l-3.2-9.8L19 42l9.8-3.2z"/><rect x="1.5" y="1.5" width="61" height="61" rx="14" fill="none" stroke="#0b1020" stroke-width="3"/></svg>
+			<span class="mono">Shippin<b>TECH</b></span>
+		</a>
+		<nav aria-label="Main">
+			<a href="#org">Teams</a>
+			<a href="#drive">Docs &amp; Drive</a>
+			<a href="#security">Security</a>
+			<a href={webmail}>Webmail</a>
+			<button class="cta ghost" id="theme" type="button" aria-label="Toggle theme">Theme</button>
+			<a class="cta" href="#signup">Get early access</a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="step" id="mail" data-scene>
+			<p class="eyebrow mono">01 · Your domain, your mail</p>
+			<h1>Run your whole org's mail, docs and drive. On your server.</h1>
+			<p>ShippinTECH is a deployable, self-hostable workspace. Bring your domain, get webmail, calendar, contacts, documents and storage under your control, without stitching five tools together.</p>
+			<div class="row">
+				<a class="cta" href="#signup">Request early access</a>
+				<a class="cta ghost" href={webmail}>Open webmail</a>
+			</div>
+		</section>
+
+		<section class="step" id="org" data-scene>
+			<p class="eyebrow mono">02 · Organise how you work</p>
+			<h2>One org today. Teams and tiers when you grow.</h2>
+			<p>Start by managing a single organisation reliably. Then split it into teams, assign tiers and limits, and give each group its own space. The same framework scales from a small shop to an umbrella of companies.</p>
+		</section>
+
+		<section class="step" id="drive" data-scene>
+			<p class="eyebrow mono">03 · Docs and Drive, on your terms</p>
+			<h2>docs.yourdomain.com, with your existing drives connected.</h2>
+			<p>Keep your own docs and drive on your own subdomain. Connect the storage you already use, so you adopt ShippinTECH without a big-bang migration.</p>
+		</section>
+
+		<section class="step" id="security" data-scene>
+			<p class="eyebrow mono">04 · Security baselines, one checkbox each</p>
+			<h2>Strong defaults, shipped off, never hidden.</h2>
+			<p>The baseline rules are provided but not switched on for you. In the admin UI each one is a checkbox, so you decide and can see exactly what changes.</p>
+			<div class="card" aria-label="Security baseline preview (illustrative)">
+				<strong>Security baseline <span class="mono">(preview)</span></strong>
+				<ul class="checks">
+					<li><label><input type="checkbox" disabled /> Require MFA for all accounts <small>off by default</small></label></li>
+					<li><label><input type="checkbox" disabled /> Enforce strict transport and DMARC reject <small>off by default</small></label></li>
+					<li><label><input type="checkbox" disabled /> Block legacy plaintext auth <small>off by default</small></label></li>
+					<li><label><input type="checkbox" disabled /> Rate-limit and lock out brute-force attempts <small>off by default</small></label></li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="step" id="signup" data-scene>
+			<p class="eyebrow mono">05 · Get in early</p>
+			<h2>Be one of the first 500.</h2>
+			<div class="tiers">
+				<div class="card"><b>First 100</b><br />Beta access with hands-on support and deployment help from us.</div>
+				<div class="card"><b>Next 400</b><br />Join the waitlist, or deploy it yourself from GitHub right away.</div>
+			</div>
+			<p class="mono" id="seats" aria-live="polite">Loading seats...</p>
+			<form class="signup" id="signup-form" data-endpoint="/api/signup">
+				<label>Work email<input type="email" name="email" required autocomplete="email" placeholder="you@company.com" /></label>
+				<label>Name <input type="text" name="name" autocomplete="name" /></label>
+				<label>If you are past the first 100
+					<select name="path">
+						<option value="waitlist">Put me on the waitlist</option>
+						<option value="self-deploy">I will deploy it myself from GitHub</option>
+					</select>
+				</label>
+				<input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+				<button class="cta" type="submit">Request access</button>
+				<p id="signup-status" class="mono" role="status" aria-live="polite"></p>
+			</form>
+		</section>
+	</main>
+
+	<footer>
+		<p>ShippinTECH · <a href={github}>GitHub</a> · <a href={webmail}>Webmail</a></p>
+		<p>Illustrative visuals. Interactive scenes are generated from data, not video.</p>
+	</footer>
+
+	<script>
+		import { startStory } from '../scripts/story';
+		import { wireSignup } from '../scripts/signup';
+
+		const canvas = document.getElementById('field') as HTMLCanvasElement;
+		const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-scene]'));
+		startStory(canvas, sections);
+		wireSignup(
+			document.getElementById('signup-form') as HTMLFormElement,
+			document.getElementById('signup-status') as HTMLElement,
+			document.getElementById('seats')
+		);
+		document.getElementById('theme')?.addEventListener('click', () => {
+			const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+			document.documentElement.dataset.theme = next;
+			try { localStorage.setItem('theme', next); } catch {}
+		});
+	</script>
+</Base>
